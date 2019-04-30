@@ -2,7 +2,10 @@
 自定义软键盘  包含 数字 ，字母，符号，希腊字母，等
 
 
-  1. 使用
+  **效果**
+ ![enter description here](./images/Screenshot_20190430-151905.jpg)![enter description here](./images/Screenshot_20190430-151920.jpg)
+ 
+ 1. 使用  
  
 
 ```  allprojects {
@@ -14,12 +17,12 @@
 	
 	
   dependencies {
-	        implementation 'com.github.blueskky:SoftKeyBoard:Tag'
+	        implementation 'com.github.blueskky:SoftKeyBoard:1.0.0'
 	}
 ```
 	
 	
- 2. 在activity中  KeyboardType.MULTI_MAXIMUM  指定第一次出现时键盘类型
+ 2. 在activity中  activity要设为横屏     KeyboardType.MULTI_MAXIMUM  指定第一次出现时键盘类型
 
 	
 ``` KeyboardConfig configure = new KeyboardConfig();
