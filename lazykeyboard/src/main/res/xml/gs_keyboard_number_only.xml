@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:horizontalGap="10dp"
+    android:keyHeight="8.88%p"
+    android:keyWidth="7%p"
+    android:verticalGap="10dp">
+
+
+    <Row>
+
+        <Key
+            android:keyEdgeFlags="left"
+            android:codes="49"
+            android:keyLabel="1" />
+        <Key
+            android:codes="50"
+            android:keyLabel="2" />
+        <Key
+            android:codes="51"
+            android:keyLabel="3" />
+
+        <Key
+            android:codes="52"
+            android:keyLabel="4" />
+        <Key
+            android:codes="53"
+            android:keyLabel="5" />
+        <Key
+            android:codes="54"
+            android:keyLabel="6" />
+
+        <Key
+            android:keyEdgeFlags="right"
+            android:codes="55"
+            android:keyLabel="7" />
+
+    </Row>
+
+
+    <Row>
+        <Key
+            android:codes="56"
+            android:keyLabel="8" />
+
+        <Key
+            android:codes="57"
+            android:keyLabel="9" />
+        <Key
+            android:codes="48"
+            android:keyLabel="0" />
+
+        <Key android:keyOutputText="@string/char_46" android:keyLabel="@string/char_46" /><!-- . -->
+
+        <Key
+            android:keyOutputText="@string/char_43" android:isModifier="true"
+            android:keyLabel="@string/char_43" /> <!-- +-->
+
+        <Key android:keyOutputText="@string/char_45" android:keyLabel="@string/char_45" /><!-- - -->
+
+        <Key
+
+            android:codes="-5"
+            android:isRepeatable="true"
+            android:keyIcon="@drawable/delete" />
+
+    </Row>
+
+
+</Keyboard>

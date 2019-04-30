@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:horizontalGap="10dp"
+    android:keyHeight="8.88%p"
+    android:keyWidth="6%p"
+    android:verticalGap="10dp">
+
+    <Row android:rowEdgeFlags="top">
+        <Key
+            android:keyEdgeFlags="left"
+            android:keyLabel="α"
+            android:keyOutputText="α" />
+        <Key
+            android:keyLabel="β"
+            android:keyOutputText="β" />
+        <Key
+            android:keyLabel="γ"
+            android:keyOutputText="γ" />
+        <Key
+            android:keyLabel="δ"
+            android:keyOutputText="δ" />
+        <Key
+            android:keyLabel="ε"
+            android:keyOutputText="ε" />
+        <Key
+            android:keyLabel="ζ"
+            android:keyOutputText="ζ" />
+        <Key
+            android:keyLabel="η"
+            android:keyOutputText="η" />
+        <Key
+            android:keyLabel="θ"
+            android:keyOutputText="θ" />
+        <Key
+            android:keyLabel="ι"
+            android:keyOutputText="ι" />
+        <Key
+            android:keyEdgeFlags="right"
+            android:keyLabel="κ"
+            android:keyOutputText="κ" />
+    </Row>
+    <Row>
+        <Key
+            android:keyEdgeFlags="left"
+            android:keyLabel="λ"
+            android:keyOutputText="λ" />
+        <Key
+            android:keyLabel="μ"
+            android:keyOutputText="μ" />
+        <Key
+            android:keyLabel="ν"
+            android:keyOutputText="ν" />
+        <Key
+            android:keyLabel="ξ"
+            android:keyOutputText="ξ" />
+        <Key
+            android:keyLabel="ο"
+            android:keyOutputText="ο" />
+        <Key
+            android:keyLabel="π"
+            android:keyOutputText="π" />
+        <Key
+            android:keyLabel="ρ"
+            android:keyOutputText="ρ" />
+        <Key
+            android:keyLabel="σ"
+            android:keyOutputText="σ" />
+        <Key
+            android:keyLabel="τ"
+            android:keyOutputText="τ" />
+        <Key
+            android:keyEdgeFlags="right"
+            android:keyLabel=" "
+            android:keyOutputText=" " />
+    </Row>
+    <Row android:rowEdgeFlags="bottom">
+
+        <Key
+            android:codes="-1"
+            android:isModifier="true"
+            android:isSticky="true"
+            android:keyEdgeFlags="left"
+            android:keyIcon="@drawable/keyboard_shift" />
+
+
+        <Key
+            android:keyEdgeFlags="right"
+            android:keyLabel="υ"
+            android:keyOutputText="υ" />
+        <Key
+            android:keyEdgeFlags="left"
+            android:keyLabel="φ"
+            android:keyOutputText="φ" />
+        <Key
+            android:keyLabel="χ"
+            android:keyOutputText="χ" />
+        <Key
+            android:keyLabel="ψ"
+            android:keyOutputText="ψ" />
+        <Key
+            android:keyLabel="ω"
+            android:keyOutputText="ω" />
+
+
+
+        <Key
+            android:isRepeatable="true"
+            android:codes="57419"
+            android:isModifier="true"
+            android:keyIcon="@drawable/last" />
+
+
+        <Key
+            android:isRepeatable="true"
+            android:codes="57421"
+            android:isModifier="true"
+            android:keyIcon="@drawable/next" />
+
+
+        <Key
+            android:codes="-5"
+            android:isRepeatable="true"
+            android:keyEdgeFlags="right"
+            android:keyIcon="@drawable/keyboard_delete" />
+
+        <Key
+            android:codes="10"
+            android:keyEdgeFlags="right"
+            android:keyLabel="Enter" />
+
+    </Row>
+
+</Keyboard>

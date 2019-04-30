@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:horizontalGap="10dp"
+    android:keyHeight="8.88%p"
+    android:keyWidth="6%p"
+    android:verticalGap="10dp">
+
+    <Row android:rowEdgeFlags="top">
+        <Key
+            android:keyEdgeFlags="left"
+            android:keyLabel="α"
+            android:keyOutputText="α" />
+        <Key
+            android:keyLabel="β"
+            android:keyOutputText="β" />
+        <Key
+            android:keyLabel="γ"
+            android:keyOutputText="γ" />
+        <Key
+            android:keyLabel="δ"
+            android:keyOutputText="δ" />
+        <Key
+            android:keyLabel="ε"
+            android:keyOutputText="ε" />
+        <Key
+            android:keyLabel="ζ"
+            android:keyOutputText="ζ" />
+        <Key
+            android:keyLabel="η"
+            android:keyOutputText="η" />
+        <Key
+            android:keyLabel="θ"
+            android:keyOutputText="θ" />
+        <Key
+            android:keyLabel="ι"
+            android:keyOutputText="ι" />
+        <Key
+            android:keyEdgeFlags="right"
+            android:keyLabel="κ"
+            android:keyOutputText="κ" />
+    </Row>
+
+
+</Keyboard>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:horizontalGap="10dp"
+    android:keyHeight="8.88%p"
+    android:keyWidth="6%p"
+    android:verticalGap="10dp">
+
+
+    <Row android:rowEdgeFlags="top">
+        <Key
+            android:codes="81"
+            android:keyEdgeFlags="left"
+            android:keyLabel="Q" />
+        <Key
+            android:codes="87"
+            android:keyLabel="W" />
+        <Key
+            android:codes="69"
+            android:keyLabel="E" />
+        <Key
+            android:codes="82"
+            android:keyLabel="R" />
+        <Key
+            android:codes="84"
+            android:keyLabel="T" />
+        <Key
+            android:codes="89"
+            android:keyLabel="Y" />
+        <Key
+            android:codes="85"
+            android:keyLabel="U" />
+        <Key
+            android:codes="73"
+            android:keyLabel="I" />
+        <Key
+            android:codes="79"
+            android:keyLabel="O" />
+        <Key
+            android:codes="80"
+            android:keyEdgeFlags="right"
+            android:keyLabel="P" />
+    </Row>
+    <Row>
+        <Key
+            android:codes="65"
+            android:keyEdgeFlags="left"
+            android:keyLabel="A" />
+        <Key
+            android:codes="83"
+            android:keyLabel="S" />
+        <Key
+            android:codes="68"
+            android:keyLabel="D" />
+        <Key
+            android:codes="70"
+            android:keyLabel="F" />
+        <Key
+            android:codes="71"
+            android:keyLabel="G" />
+        <Key
+            android:codes="72"
+            android:keyLabel="H" />
+        <Key
+            android:codes="74"
+            android:keyLabel="J" />
+        <Key
+            android:codes="75"
+            android:keyLabel="K" />
+        <Key
+            android:codes="76"
+            android:keyLabel="L" />
+
+        <Key
+            android:codes="59"
+            android:keyEdgeFlags="right"
+            android:keyLabel=";" />
+    </Row>
+    <Row>
+
+        <Key
+            android:codes="90"
+            android:keyLabel="Z" />
+        <Key
+            android:codes="88"
+            android:keyLabel="X" />
+        <Key
+            android:codes="67"
+            android:keyLabel="C" />
+        <Key
+            android:codes="86"
+            android:keyLabel="V" />
+        <Key
+            android:codes="66"
+            android:keyLabel="B" />
+        <Key
+            android:codes="78"
+            android:keyLabel="N" />
+        <Key
+            android:codes="77"
+            android:keyLabel="M" />
+
+        <Key
+            android:codes="44"
+            android:keyLabel="," />
+
+        <Key
+            android:codes="46"
+            android:keyLabel="." />
+
+        <Key
+            android:codes="63"
+            android:keyLabel="\?" />
+
+    </Row>
+
+
+    <Row android:rowEdgeFlags="bottom">
+
+
+        <Key
+            android:codes="-1"
+            android:isModifier="true"
+            android:isSticky="true"
+            android:keyEdgeFlags="left"
+            android:keyIcon="@drawable/keyboard_shift_c" />
+
+
+        <Key
+            android:keyIcon="@drawable/space"
+            android:codes="32"
+            android:keyWidth="35%p" />
+
+        <Key
+            android:isRepeatable="true"
+            android:codes="57419"
+            android:isModifier="true"
+            android:keyIcon="@drawable/last" />
+
+
+        <Key
+            android:isRepeatable="true"
+            android:codes="57421"
+            android:isModifier="true"
+            android:keyIcon="@drawable/next" />
+
+
+        <Key
+            android:codes="-5"
+            android:isRepeatable="true"
+            android:keyEdgeFlags="right"
+            android:keyIcon="@drawable/keyboard_delete" />
+
+        <Key
+            android:codes="10"
+            android:keyEdgeFlags="right"
+            android:keyLabel="Enter" />
+
+
+    </Row>
+
+</Keyboard>

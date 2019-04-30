@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+    First name:<br>
+    <input type="text" name="firstname">
+
+    Last name:
+    <input type="text" name="lastname">
+    <br><br><br>
+
+
+<p>如果您点击提交，表单数据会被发送到名为 demo_form.asp 的页面。</p>
+
+
+<script>
+
+        var ipt =document.getElementsByTagName("input"); //获取table中所有的文本输入控件
+        for (i = 0; i < ipt.length; i++){
+           if (ipt[i].getAttribute("type") == "text") {//如果是文本框,就判断是否为空
+               ipt[i].onblur   = function(){
+                   //执行的函数
+                   console.log("输入框失去焦点");
+                   window.js.onBlur();
+               }
+
+
+               ipt[i].onfocus   = function(){
+                   //执行的函数
+                   console.log("输入框获取焦点");
+                   window.js.onFocus();
+                }
+           }
+        }
+
+</script>
+
+</body>
+</html>

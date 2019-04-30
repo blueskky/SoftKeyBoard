@@ -1,0 +1,74 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/keyboard_view_ly"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/key_board_bg"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+
+    <RadioGroup
+        android:id="@+id/ll_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/shape_switch_container_bg"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:visibility="visible">
+
+        <RadioButton
+            android:id="@+id/tv_zh"
+            style="@style/menu_radio_button"
+            android:layout_marginTop="0dp"
+            android:checked="true"
+            android:text="中文" />
+
+        <RadioButton
+            android:id="@+id/tv_used"
+            style="@style/menu_radio_button"
+            android:text="常用" />
+
+
+        <RadioButton
+            android:id="@+id/tv_abc"
+            style="@style/menu_radio_button"
+            android:text="abc" />
+
+        <RadioButton
+            android:id="@+id/tv_greece"
+            style="@style/menu_radio_button"
+            android:text="αβγ" />
+
+        <RadioButton
+            android:id="@+id/tv_expression"
+            style="@style/menu_radio_button"
+            android:text="公式" />
+
+        <RadioButton
+            android:id="@+id/tv_symbol"
+            style="@style/menu_radio_button"
+            android:text="符号" />
+    </RadioGroup>
+
+
+    <android.inputmethodservice.KeyboardView
+        android:id="@+id/keyboard_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:background="#e5e5e5"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:keyBackground="@drawable/keyboard_key"
+        android:keyTextColor="#000000"
+        android:padding="10dp"
+        android:shadowRadius="0.0"
+        android:textStyle="bold" />
+
+
+</LinearLayout>
