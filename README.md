@@ -2,15 +2,15 @@
 自定义软键盘  包含 数字 ，字母，符号，希腊字母，等
 
 
- 1. 使用
+  1. 使用
  
 
-```   allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+```  allprojects {
+			repositories {
+				...
+				maven { url 'https://jitpack.io' }
+			 }
+	    }
 	
 	
   dependencies {
@@ -32,4 +32,6 @@
 
 ``` editText.setTag(R.id.input_type, KeyboardType.LETTER_ONLY);
 ```
+
+
 
