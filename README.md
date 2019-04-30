@@ -3,7 +3,7 @@
 自定义软键盘  包含 数字 ，字母，符号，希腊字母，等
 
   **效果**
- ![](screenshot/Screenshot_20190430-151905.jpg)   ![]()
+ ![](screenshot/Screenshot_20190430-151905.jpg)   ![](screenshot/Screenshot_20190430-151920.jpg)
 
 1.使用
 
