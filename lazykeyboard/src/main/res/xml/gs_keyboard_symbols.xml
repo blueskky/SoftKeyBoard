@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
     android:horizontalGap="10dp"
-    android:keyHeight="8.88%p"
-    android:keyWidth="6%p"
+    android:keyHeight="@dimen/key_height"
+    android:keyWidth="@dimen/key_width"
     android:verticalGap="10dp">
 
 

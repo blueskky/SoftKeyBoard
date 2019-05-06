@@ -7,7 +7,9 @@
     tools:context=".MainActivity">
     <!--自定义键盘控件-->
 
-
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,33 +19,28 @@
         android:orientation="horizontal">
 
 
-
         <EditText
             android:id="@+id/et1"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:inputType="phone" />
+            android:layout_height="wrap_content" />
 
         <EditText
 
             android:id="@+id/et2"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:inputType="phone" />
+            android:layout_height="wrap_content" />
 
 
         <EditText
             android:id="@+id/et3"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:inputType="phone" />
+            android:layout_height="wrap_content" />
 
 
         <EditText
             android:id="@+id/et4"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:inputType="phone" />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

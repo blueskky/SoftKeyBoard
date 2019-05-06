@@ -1,12 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/keyboard_view_ly"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
-    android:background="@drawable/key_board_bg"
-    android:gravity="center"
-    android:orientation="horizontal">
-
+    android:orientation="horizontal"
+    android:background="@drawable/key_board_bg">
 
     <RadioGroup
         android:id="@+id/ll_menu"
@@ -20,11 +17,10 @@
         android:padding="10dp"
         android:visibility="visible">
 
-        <RadioButton
+        <Button
             android:id="@+id/tv_zh"
             style="@style/menu_radio_button"
             android:layout_marginTop="0dp"
-            android:checked="true"
             android:text="中文" />
 
         <RadioButton
@@ -54,21 +50,29 @@
             android:text="符号" />
     </RadioGroup>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <android.inputmethodservice.KeyboardView
-        android:id="@+id/keyboard_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_margin="5dp"
-        android:background="#e5e5e5"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:keyBackground="@drawable/keyboard_key"
-        android:keyTextColor="#000000"
-        android:padding="10dp"
-        android:shadowRadius="0.0"
-        android:textStyle="bold" />
+
+        <android.inputmethodservice.KeyboardView
+            android:layout_centerInParent="true"
+            android:id="@+id/keyboard_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:background="#e5e5e5"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:keyBackground="@drawable/keyboard_key"
+            android:keyTextColor="#000000"
+            android:padding="10dp"
+            android:shadowRadius="0.0"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
 
 
 </LinearLayout>

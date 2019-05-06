@@ -24,8 +24,10 @@ import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -64,14 +66,14 @@ public class CustomKeyboard extends PopupWindow {
     Keyboard keyboard;
     private KeyboardType currKeyboardType;
     private ViewGroup mRootView;
-    private RadioButton rb_zh, rb_used, rb_adc, rb_alpha, rb_symbol, rb_expression;
+    private RadioButton  rb_used, rb_adc, rb_alpha, rb_symbol, rb_expression;
+    Button rb_zh;
     private final View mChildOfContent;
     private int usableHeightPrevious;
 
 
-
     public static void init(Activity mContext, KeyboardConfig configure) {
-        new CustomKeyboard(mContext,configure);
+        new CustomKeyboard(mContext, configure);
     }
 
 
@@ -88,8 +90,8 @@ public class CustomKeyboard extends PopupWindow {
         this.setContentView(mKeyboardViewContainer);
 
 
-        this.setWidth(DisplayUtils.getScreenWidth(mContext) - 200);
-//        this.setWidth(LayoutParams.WRAP_CONTENT);
+//        this.setWidth(DisplayUtils.getScreenWidth(mContext) - 200);
+        this.setWidth(LayoutParams.MATCH_PARENT);
         this.setHeight(LayoutParams.WRAP_CONTENT);
 
 
@@ -137,6 +139,14 @@ public class CustomKeyboard extends PopupWindow {
             }
         });
 
+        rb_zh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+                showSystemKeyBoard();
+            }
+        });
+
 
         keyboardView.setEnabled(true);
         keyboardView.setPreviewEnabled(false);
@@ -181,11 +191,11 @@ public class CustomKeyboard extends PopupWindow {
                             int heightDifference = usableHeightSansKeyboard - usableHeightNow;
                             if (heightDifference > (usableHeightSansKeyboard / 4)) {
                                 // keyboard probably just became visible
-                                Log.d("lhq","onGlobalLayout visible");
+                                Log.d("lhq", "onGlobalLayout visible");
                             } else {
                                 // keyboard probably just became hidden
 
-                                Log.d("lhq","onGlobalLayout hidden");
+                                Log.d("lhq", "onGlobalLayout hidden");
                             }
                             mChildOfContent.requestLayout();
                             usableHeightPrevious = usableHeightNow;
@@ -311,13 +321,13 @@ public class CustomKeyboard extends PopupWindow {
 
 
     private void showSystemKeyBoard() {
-//        Timer timer = new Timer();
-//        timer.schedule(new TimerTask() {
-//            public void run() {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            public void run() {
                 InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
                 inputManager.showSoftInput(curEditText, 0);
-//            }
-//        }, 100);
+            }
+        }, 100);
 
     }
 
@@ -516,7 +526,7 @@ public class CustomKeyboard extends PopupWindow {
                     public void run() {
                         scrollCurrentView(view);
                     }
-                },200 );
+                }, 200);
 
             }
 

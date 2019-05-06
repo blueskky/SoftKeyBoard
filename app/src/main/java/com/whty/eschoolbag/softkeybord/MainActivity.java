@@ -22,8 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private EditText et1, et2, et3, et4;
-    private CustomKeyboard customKeyboard;
-    private WebView webview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +33,12 @@ public class MainActivity extends AppCompatActivity {
         et1 = (EditText) findViewById(R.id.et1);
         et2 = (EditText) findViewById(R.id.et2);
         et3 = (EditText) findViewById(R.id.et3);
-
         et4 = (EditText) findViewById(R.id.et4);
 
-        et1.setTag(R.id.input_type, KeyboardType.LETTER_ONLY);
-        et2.setTag(R.id.input_type, KeyboardType.MULTI_ALPHA);
-        et3.setTag(R.id.input_type, KeyboardType.MULTI_SYMBOL);
-        et4.setTag(R.id.input_type, KeyboardType.INPUT_ZH);
+//        et1.setTag(R.id.input_type, KeyboardType.LETTER_ONLY);
+//        et2.setTag(R.id.input_type, KeyboardType.MULTI_ALPHA);
+//        et3.setTag(R.id.input_type, KeyboardType.MULTI_SYMBOL);
+//        et4.setTag(R.id.input_type, KeyboardType.INPUT_ZH);
 
         KeyboardConfig configure = new KeyboardConfig();
         configure.setDefaultKeyboardType(KeyboardType.MULTI_MAXIMUM);
@@ -54,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         @JavascriptInterface
         public void onFocus(){
             Log.d("lhq","onfocus");
-            customKeyboard.hideSystemKeyboard(getWindow().getDecorView());
         }
 
         @JavascriptInterface

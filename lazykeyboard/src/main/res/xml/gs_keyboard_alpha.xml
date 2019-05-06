@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
     android:horizontalGap="10dp"
-    android:keyHeight="8.88%p"
-    android:keyWidth="6%p"
+    android:keyHeight="@dimen/key_height"
+    android:keyWidth="@dimen/key_width"
     android:verticalGap="10dp">
 
     <Row android:rowEdgeFlags="top">
@@ -84,11 +84,9 @@
 
 
         <Key
-            android:keyEdgeFlags="right"
             android:keyLabel="υ"
             android:keyOutputText="υ" />
         <Key
-            android:keyEdgeFlags="left"
             android:keyLabel="φ"
             android:keyOutputText="φ" />
         <Key
@@ -100,8 +98,6 @@
         <Key
             android:keyLabel="ω"
             android:keyOutputText="ω" />
-
-
 
         <Key
             android:isRepeatable="true"
