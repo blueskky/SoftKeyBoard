@@ -58,4 +58,5 @@ public class CanvasRecord {
         Log.d("CanvasRecord", "release: ");
         recordMap.clear();
     }
+
 }

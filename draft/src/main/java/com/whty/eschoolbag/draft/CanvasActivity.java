@@ -42,12 +42,14 @@ import static com.whty.eschoolbag.draft.CanvasUtils.saveInOI;
  * @author chen
  */
 public class CanvasActivity extends Activity {
+    private static final String FRAG_INDEX = "fragment_index";
+    private static final String IS_RECORD = "is_record";
     private String TAG = "CanvasActivity";
 
-    public static final String PICK_RESOURCE ="PICK_RESOURCE";
-    public static final String LAST_RESOURCE ="LAST_RESOURCE";
+    public static final String PICK_RESOURCE = "PICK_RESOURCE";
+    public static final String LAST_RESOURCE = "LAST_RESOURCE";
 
-    RelativeLayout  layoutBottom;
+    RelativeLayout layoutBottom;
 
     ImageView viewLine;
 
@@ -77,6 +79,21 @@ public class CanvasActivity extends Activity {
     //罗博笔后台监听注册key
     private String key;
     private ImageView ivClose;
+    private int index;
+    private boolean isRecord;
+
+
+    public static void launch(Activity context, int currentItem, boolean isReodrd) {
+        int writePermission = PermissionChecker.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (writePermission != PermissionChecker.PERMISSION_GRANTED) {
+            Toast.makeText(context, "该功能需要存储权限,请打开存储权限", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Intent intent = new Intent(context, CanvasActivity.class);
+        intent.putExtra(FRAG_INDEX, currentItem);
+        intent.putExtra(IS_RECORD, isReodrd);
+        context.startActivity(intent);
+    }
 
     public static void launchForResult(Activity context, int requestCode) {
         int writePermission = PermissionChecker.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -88,26 +105,24 @@ public class CanvasActivity extends Activity {
     }
 
 
-
     protected void initView() {
 
         ivClose = findViewById(R.id.iv_close);
-        canvasView=findViewById(R.id.canvas_view);
-        layoutBottom=findViewById(R.id.layout_bottom);
-        viewLine=findViewById(R.id.view_line);
-        ivColor=findViewById(R.id.iv_color);
-        viewDivider=findViewById(R.id.view_divider);
-        ivUndo=findViewById(R.id.iv_undo);
+        canvasView = findViewById(R.id.canvas_view);
+        layoutBottom = findViewById(R.id.layout_bottom);
+        viewLine = findViewById(R.id.view_line);
+        ivColor = findViewById(R.id.iv_color);
+        viewDivider = findViewById(R.id.view_divider);
+        ivUndo = findViewById(R.id.iv_undo);
 
-        ivRedo=findViewById(R.id.iv_redo);
-        ivClean=findViewById(R.id.iv_clean);
+        ivRedo = findViewById(R.id.iv_redo);
+        ivClean = findViewById(R.id.iv_clean);
 
-        layoutSave=findViewById(R.id.layout_save);
-        ivSave=findViewById(R.id.view_save);
+        layoutSave = findViewById(R.id.layout_save);
+        ivSave = findViewById(R.id.view_save);
 
-        btnSave=findViewById(R.id.btn_save);
+        btnSave = findViewById(R.id.btn_save);
     }
-
 
 
     @Override
@@ -126,6 +141,9 @@ public class CanvasActivity extends Activity {
         initView();
         mInstance = this;
         LibContext.onCreate(mInstance);
+
+        index = getIntent().getIntExtra(FRAG_INDEX, 0);
+        isRecord = getIntent().getBooleanExtra(IS_RECORD, false);
 
         DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
         float noteBookW = displayMetrics.widthPixels;
@@ -197,7 +215,7 @@ public class CanvasActivity extends Activity {
         ivClean.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             canvasView.clear();
+                canvasView.clear();
             }
         });
 
@@ -222,7 +240,6 @@ public class CanvasActivity extends Activity {
                 onBackPressed();
             }
         });
-
 
 
         CanvasUtils.size_y(mInstance, 0, 72, layoutBottom);
@@ -256,16 +273,18 @@ public class CanvasActivity extends Activity {
 
         key = System.currentTimeMillis() + "";
 
-
-        lastPath = getIntent().getStringExtra(LAST_RESOURCE);
-        NoteBean noteBean = CanvasRecord.getRecord().getRecord(lastPath);
-        if (noteBean != null) {
-            canvasView.loadPage(noteBean.getPaths(), noteBean.getRecoverPaths());
+        if (isRecord) {
+            NoteBean noteBean = CanvasRecord.getRecord().getRecord(String.valueOf(index));
+            if (noteBean != null) {
+                canvasView.loadPage(noteBean.getPaths(), noteBean.getRecoverPaths());
+            }
         }
+
 
     }
 
     private PopCanvasColor popCanvasColor;
+
     private void showPopCanvasColor(View v) {
         if (popCanvasColor == null) {
             popCanvasColor = new PopCanvasColor(this);
@@ -355,6 +374,14 @@ public class CanvasActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        if (isRecord) {
+            NoteBean noteBean = new NoteBean(index);
+            noteBean.setPaths(canvasView.getPaths());
+            noteBean.setRecoverPaths(canvasView.getRecoverPaths());
+            CanvasRecord.getRecord().setRecord(String.valueOf(index), noteBean);
+        }
+
         if (canvasView != null) {
             canvasView.release();
         }
@@ -364,6 +391,7 @@ public class CanvasActivity extends Activity {
     public void save2File(Context context, final Bitmap bitmap) {
         new saveToFileTask(context).execute(bitmap);
     }
+
 
     class saveToFileTask extends AsyncTask<Bitmap, Void, File> {
 
@@ -399,10 +427,10 @@ public class CanvasActivity extends Activity {
 
                 insertImage(CanvasActivity.this, filePath);
 
-                NoteBean noteBean = new NoteBean(filePath);
-                noteBean.setPaths(canvasView.getPaths());
-                noteBean.setRecoverPaths(canvasView.getRecoverPaths());
-                CanvasRecord.getRecord().setRecord(filePath, noteBean);
+//                NoteBean noteBean = new NoteBean(filePath);
+//                noteBean.setPaths(canvasView.getPaths());
+//                noteBean.setRecoverPaths(canvasView.getRecoverPaths());
+//                CanvasRecord.getRecord().setRecord(filePath, noteBean);
 
                 Intent intent = new Intent();
                 intent.putExtra(LAST_RESOURCE, lastPath);
@@ -430,7 +458,6 @@ public class CanvasActivity extends Activity {
 
         Log.d("FileUtils", "insertImage: over  " + path);
     }
-
 
 
 }

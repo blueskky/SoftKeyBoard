@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements CustomKeyboard.Tx
         View view = LayoutInflater.from(this).inflate(R.layout.activity_main, null);
         setContentView(view);
 
-        Draft.getInstance().register(this);
 
         editText = (EditText) findViewById(R.id.etd);
 

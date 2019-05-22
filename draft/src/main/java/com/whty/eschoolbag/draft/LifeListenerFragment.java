@@ -35,6 +35,16 @@ public class LifeListenerFragment extends Fragment {
         }
     }
 
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        if (mLifeListener != null) {
+            mLifeListener.onPause();
+        }
+    }
+
     @Override
     public void onStop() {
         super.onStop();

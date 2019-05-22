@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -18,18 +19,28 @@ public class Draft {
     private AttachButton attachButton;
     private FrameLayout contentView;
     private Activity context;
-
-    private Draft() {
-    }
-
-    public static Draft getInstance() {
-        return new Draft();
-    }
+    private ViewPager viewPager;
+    private int currentFrgIndex;
+    private boolean isReocrdHistory;
 
 
-    public void register(final Activity context) {
+
+
+
+    public void attach(Activity context,boolean isReocrdHistory) {
         this.context = context;
+        this.isReocrdHistory=isReocrdHistory;
         addLifeListener(context);
+    }
+
+
+    public void setViewPager(ViewPager viewPager) {
+        this.viewPager = viewPager;
+    }
+
+
+    public void setCurrentFrgIndex(int currentFrgIndex) {
+        this.currentFrgIndex = currentFrgIndex;
     }
 
     private void addLifeListener(Activity activity) {
@@ -58,23 +69,31 @@ public class Draft {
 
         @Override
         public void onStart() {
+            Log.d("lhq", "onStart");
         }
 
         @Override
         public void onResume() {
+            Log.d("lhq", "onResume");
+            attachButton.setVisibility(View.VISIBLE);
         }
 
         @Override
         public void onPause() {
+            Log.d("lhq", "onPause");
+            attachButton.setVisibility(View.GONE);
         }
 
         @Override
         public void onStop() {
+            Log.d("lhq", "onStop");
         }
 
         @Override
         public void onDestroy() {
+            Log.d("lhq", "onDestroy");
             removeDraftView();
+            CanvasRecord.getRecord().release();
         }
     };
 
@@ -93,7 +112,10 @@ public class Draft {
         attachButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CanvasActivity.launchForResult(context, 100);
+                if(viewPager!=null){
+                    currentFrgIndex = viewPager.getCurrentItem();
+                }
+                CanvasActivity.launch(context, currentFrgIndex,isReocrdHistory);
             }
         });
     }
