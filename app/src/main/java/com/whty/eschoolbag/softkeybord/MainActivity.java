@@ -1,17 +1,12 @@
 package com.whty.eschoolbag.softkeybord;
 
-import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.provider.Telephony;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
@@ -19,15 +14,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
 
-import com.didichuxing.doraemonkit.DoraemonKit;
-import com.whty.eschoolbag.draft.Draft;
 import com.whty.eschoolbag.softkeyboard.keyboard.CustomKeyboard;
 import com.whty.eschoolbag.softkeyboard.keyboard.KeyboardConfig;
 import com.whty.eschoolbag.softkeyboard.keyboard.KeyboardType;
-import com.whty.eschoolbag.softkeyboard.utils.KeyBoardListener;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity implements CustomKeyboard.TxtListener {
 
@@ -44,35 +33,34 @@ public class MainActivity extends AppCompatActivity implements CustomKeyboard.Tx
         setContentView(view);
 
 
-        editText = (EditText) findViewById(R.id.etd);
 
-        webView = (WebView) findViewById(R.id.web_view);
 
-        webView.setWebChromeClient(new WebChromeClient());
-        webView.setWebViewClient(new WebViewClient());
-        webView.getSettings().setJavaScriptEnabled(true);
-
-        initWebSetting();
+//        webView = (WebView) findViewById(R.id.web_view);
+//
+//        webView.setWebChromeClient(new WebChromeClient());
+//        webView.setWebViewClient(new WebViewClient());
+//        webView.getSettings().setJavaScriptEnabled(true);
+//
+//        initWebSetting();
 //        webView.loadUrl("file:///android_asset/Keyboard-master/index.html");
-
-        webView.loadUrl("file:///android_asset/test.html");
-
-        webView.addJavascriptInterface(new JsInterface(), "js");
+//        webView.loadUrl("file:///android_asset/test.html");
+//        webView.addJavascriptInterface(new JsInterface(), "js");
 
 
+        editText = (EditText) findViewById(R.id.etd);
         et1 = (EditText) findViewById(R.id.et1);
         et2 = (EditText) findViewById(R.id.et2);
         et3 = (EditText) findViewById(R.id.et3);
         et4 = (EditText) findViewById(R.id.et4);
 
-//        et1.setTag(R.id.input_type, KeyboardType.LETTER_ONLY);
-//        et2.setTag(R.id.input_type, KeyboardType.MULTI_ALPHA);
-//        et3.setTag(R.id.input_type, KeyboardType.MULTI_SYMBOL);
-//        et4.setTag(R.id.input_type, KeyboardType.INPUT_ZH);
+        et1.setTag(R.id.input_type, KeyboardType.LETTER_ONLY);
+        et2.setTag(R.id.input_type, KeyboardType.MULTI_ALPHA);
+        et3.setTag(R.id.input_type, KeyboardType.MULTI_SYMBOL);
+        et4.setTag(R.id.input_type, KeyboardType.INPUT_ZH);
 
-//        KeyboardConfig configure = new KeyboardConfig();
-//        configure.setDefaultKeyboardType(KeyboardType.MULTI_MAXIMUM);
-//        customKeyboard = CustomKeyboard.init(this, this,configure);
+        KeyboardConfig configure = new KeyboardConfig();
+        configure.setDefaultKeyboardType(KeyboardType.MULTI_MAXIMUM);
+        customKeyboard = CustomKeyboard.init(this, this,configure);
 
 
     }
@@ -114,12 +102,6 @@ public class MainActivity extends AppCompatActivity implements CustomKeyboard.Tx
         });
     }
 
-    public void goDraft(View view) {
-        startActivity(new Intent(this,TestActivity.class));
-    }
-
-
-
     private class JsInterface {
 
         @JavascriptInterface
@@ -152,18 +134,16 @@ public class MainActivity extends AppCompatActivity implements CustomKeyboard.Tx
 //        imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
 
 
-        while(true){
-            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-            boolean isOpen=imm.isActive();//isOpen若返回true，则表示输入法打开
+        while (true) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            boolean isOpen = imm.isActive();//isOpen若返回true，则表示输入法打开
 
-            if(isOpen){
+            if (isOpen) {
                 imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
                 break;
             }
 
         }
-
-
 
 
     }

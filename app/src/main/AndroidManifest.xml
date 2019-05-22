@@ -17,8 +17,6 @@
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateAlwaysHidden">
 
-        </activity>
-        <activity android:name=".TestActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
+
         </activity>
+
+
     </application>
 
 </manifest>
