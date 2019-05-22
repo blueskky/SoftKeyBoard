@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/close_selector" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="正在使用草稿本"
+            android:textColor="#47A0FF"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/view_line"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="24dp"
+                android:background="@drawable/canvas_stroke_width1_press" />
+
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/iv_color"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="18dp"
+                android:padding="6dp"
+                android:scaleType="fitCenter"
+                android:src="#000000" />
+
+            <ImageView
+                android:id="@+id/iv_undo"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="18dp"
+                android:background="@drawable/canvas_undo" />
+
+            <ImageView
+                android:id="@+id/iv_redo"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="18dp"
+                android:background="@drawable/canvas_redo" />
+
+            <ImageView
+                android:layout_marginRight="20dp"
+                android:id="@+id/iv_clean"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="18dp"
+                android:background="@drawable/canvas_clean" />
+
+
+            <View
+                android:visibility="gone"
+                android:id="@+id/view_divider"
+                android:layout_width="1dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="12dp"
+                android:background="@drawable/canvas_divider" />
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/layout_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/view_save"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/canvas_save" />
+
+                <TextView
+                    android:id="@+id/btn_save"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:background="#00ffffff"
+                    android:text="保存"
+                    android:textSize="32sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e1e1e1" />
+
+
+    <RelativeLayout
+        android:id="@+id/robot_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.whty.eschoolbag.draft.RobotCanvasView
+            android:background="@android:color/transparent"
+            android:id="@+id/canvas_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

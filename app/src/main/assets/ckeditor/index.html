@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+.ques_content {
+	margin-top:45px;
+	padding:0 10px;
+	width: 600px;
+	height: 200px;
+	overflow: auto;
+	border: 1px solid #d5d5d5;
+}
+</style>
+<script type="text/javascript" src="./ref/ckeditor.js"></script></head>
+<body>
+<div id="example" contenteditable="true" class="ques_content"></div>
+<script type="text/javascript">
+	//CKEDITOR.replace('example', {language: 'zh-CN',width: '850px'});
+	CKEDITOR.on( 'instanceCreated', function( event ) {
+		var editor = event.editor;
+		var element = editor.element;
+		var editorId = element.getAttribute( 'id' );
+		//alert(editorId);
+		editor.on( 'configLoaded', function() {
+			editor.config.filebrowserUploadUrl="/coursecenter/open/uploadPic.action";
+		});		
+		editor.on("focus", function( evt ){
+			if (window.parent.adjustZindex) {
+				window.parent.adjustZindex(idInParentPage);
+			}
+
+		});
+		editor.on("blur", function( evt ){
+			if (window.parent.adjustZindex) {
+				window.parent.adjustZindex(idInParentPage);
+			}
+		});
+	});
+</script>	
+<script type="text/javascript" >
+		var idInParentPage = '';
+		function setIdInParentPage(id){
+			idInParentPage = id;
+		}
+		function getEditorContentInHtml(){
+			var editor = CKEDITOR.instances.example;
+			return editor.getData();
+		}
+		function setEditorData(data) {
+			var editor = CKEDITOR.instances.example;
+			editor.setData(data);
+		}
+	</script>		
+</body>
+</html>

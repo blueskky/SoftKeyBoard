@@ -8,6 +8,13 @@
     <!--自定义键盘控件-->
 
     <EditText
+        android:id="@+id/etd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
+
+    <WebView
+        android:id="@+id/web_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -16,7 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="100dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
 
         <EditText
@@ -43,6 +51,16 @@
             android:layout_height="wrap_content" />
 
     </LinearLayout>
+
+
+
+    <Button
+        android:onClick="goDraft"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="草稿本"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
 </RelativeLayout>

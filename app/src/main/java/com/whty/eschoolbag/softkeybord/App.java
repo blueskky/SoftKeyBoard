@@ -10,6 +10,6 @@ public class App extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
-        DoraemonKit.install(this);
+//        DoraemonKit.install(this);
     }
 }

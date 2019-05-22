@@ -1,1 +1,1 @@
-include ':app','lazykeyboard'
+include ':app', ':draft','lazykeyboard'

@@ -13,6 +13,7 @@ import android.inputmethodservice.KeyboardView.OnKeyboardActionListener;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.Selection;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -66,21 +67,24 @@ public class CustomKeyboard extends PopupWindow {
     Keyboard keyboard;
     private KeyboardType currKeyboardType;
     private ViewGroup mRootView;
-    private RadioButton  rb_used, rb_adc, rb_alpha, rb_symbol, rb_expression;
+    private RadioButton rb_used, rb_adc, rb_alpha, rb_symbol, rb_expression;
     Button rb_zh;
     private final View mChildOfContent;
     private int usableHeightPrevious;
 
+    private TxtListener txtListener;
 
-    public static void init(Activity mContext, KeyboardConfig configure) {
-        new CustomKeyboard(mContext, configure);
+
+    public static CustomKeyboard init(Activity mContext, TxtListener listener, KeyboardConfig configure) {
+        return new CustomKeyboard(mContext, listener, configure);
     }
 
 
     @SuppressLint("ClickableViewAccessibility")
-    public CustomKeyboard(Activity mContext, KeyboardConfig keyboardConfig) {
+    public CustomKeyboard(Activity mContext, final TxtListener txtListener, KeyboardConfig keyboardConfig) {
         super(mContext);
         this.mContext = mContext;
+        this.txtListener = txtListener;
         mRootView = (mContext.getWindow().getDecorView().findViewById(android.R.id.content));
 
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -115,6 +119,30 @@ public class CustomKeyboard extends PopupWindow {
         rb_alpha = mKeyboardViewContainer.findViewById(R.id.tv_greece);
         rb_expression = mKeyboardViewContainer.findViewById(R.id.tv_expression);
         rb_symbol = mKeyboardViewContainer.findViewById(R.id.tv_symbol);
+
+        curEditText = mKeyboardViewContainer.findViewById(R.id.et);
+
+        curEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String currentTxt = curEditText.getText().toString();
+                if (txtListener != null) {
+                    txtListener.onTextChange(currentTxt);
+                }
+
+
+            }
+        });
 
         //init keyboard
         switchKeyboardType(keyboardConfig.getDefaultKeyboardType());
@@ -163,7 +191,7 @@ public class CustomKeyboard extends PopupWindow {
                         if (event.getAction() == MotionEvent.ACTION_UP) {
                             curEditText = (EditText) v;
                             curEditText.requestFocus();
-                            //curEditText.setInputType(InputType.TYPE_NULL);
+                            curEditText.setInputType(InputType.TYPE_NULL);
                             //将光标移到文本最后
                             Editable editable = curEditText.getText();
                             Selection.setSelection(editable, editable.length());
@@ -241,6 +269,8 @@ public class CustomKeyboard extends PopupWindow {
         if (!this.isShowing()) {
             showCustomKeyBoard(curEditText);
         }
+
+        curEditText.setText(null);
 
 
     }
@@ -616,6 +646,15 @@ public class CustomKeyboard extends PopupWindow {
             }
         }
         return allChildren;
+    }
+
+
+    public void setTxtListener(TxtListener txtListener) {
+        this.txtListener = txtListener;
+    }
+
+    public interface TxtListener {
+        void onTextChange(String txt);
     }
 
 

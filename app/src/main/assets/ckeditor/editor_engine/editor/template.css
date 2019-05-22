@@ -1,0 +1,939 @@
+.wrs_editor{color:#000;background:transparent;}.wrs_editor div,.wrs_editor dl,.wrs_editor dt,.wrs_editor dd,.wrs_editor ul,.wrs_editor ol,.wrs_editor li,.wrs_editor h1,.wrs_editor h2,.wrs_editor h3,.wrs_editor h4,.wrs_editor h5,.wrs_editor h6,.wrs_editor pre,.wrs_editor code,.wrs_editor form,.wrs_editor fieldset,.wrs_editor legend,.wrs_editor input,.wrs_editor button,.wrs_editor textarea,.wrs_editor p,.wrs_editor blockquote,.wrs_editor th,.wrs_editor td{margin:0;padding:0;}.wrs_editor table{border-collapse:collapse;border-spacing:0;margin:0}.wrs_editor fieldset,.wrs_editor img{border:0;vertical-align:baseline}.wrs_editor address,.wrs_editor caption,.wrs_editor cite,.wrs_editor code,.wrs_editor dfn,.wrs_editor em,.wrs_editor strong,.wrs_editor th,.wrs_editor var,.wrs_editor optgroup{font-style:inherit;font-weight:inherit;}.wrs_editor del,.wrs_editor ins{text-decoration:none;}.wrs_editor li{list-style:none;}.wrs_editor caption,.wrs_editor th{text-align:left;}.wrs_editor h1,.wrs_editor h2,.wrs_editor h3,.wrs_editor h4,.wrs_editor h5,.wrs_editor h6{font-size:100%;font-weight:normal;}.wrs_editor q:before,.wrs_editor q:after{content:'';}.wrs_editor abbr,.wrs_editor acronym{border:0;font-variant:normal;}.wrs_editor sup{vertical-align:baseline;}.wrs_editor sub{vertical-align:baseline;}.wrs_editor legend{color:#000;}.wrs_editor input,.wrs_editor button,.wrs_editor textarea,.wrs_editor select,.wrs_editor optgroup,.wrs_editor option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}.wrs_editor input,.wrs_editor button,.wrs_editor textarea,.wrs_editor select{*font-size:100%;}
+.wrs_viewer{color:#000;background:transparent;}.wrs_viewer div,.wrs_viewer dl,.wrs_viewer dt,.wrs_viewer dd,.wrs_viewer ul,.wrs_viewer ol,.wrs_viewer li,.wrs_viewer h1,.wrs_viewer h2,.wrs_viewer h3,.wrs_viewer h4,.wrs_viewer h5,.wrs_viewer h6,.wrs_viewer pre,.wrs_viewer code,.wrs_viewer form,.wrs_viewer fieldset,.wrs_viewer legend,.wrs_viewer input,.wrs_viewer button,.wrs_viewer textarea,.wrs_viewer p,.wrs_viewer blockquote,.wrs_viewer th,.wrs_viewer td{margin:0;padding:0;}.wrs_viewer table{border-collapse:collapse;border-spacing:0;margin:0}.wrs_viewer fieldset,.wrs_viewer img{border:0;vertical-align:baseline}.wrs_viewer address,.wrs_viewer caption,.wrs_viewer cite,.wrs_viewer code,.wrs_viewer dfn,.wrs_viewer em,.wrs_viewer strong,.wrs_viewer th,.wrs_viewer var,.wrs_viewer optgroup{font-style:inherit;font-weight:inherit;}.wrs_viewer del,.wrs_viewer ins{text-decoration:none;}.wrs_editor li{list-style:none;}.wrs_viewer caption,.wrs_viewer th{text-align:left;}.wrs_viewer h1,.wrs_viewer h2,.wrs_viewer h3,.wrs_viewer h4,.wrs_viewer h5,.wrs_viewer h6{font-size:100%;font-weight:normal;}.wrs_viewer q:before,.wrs_viewer q:after{content:'';}.wrs_viewer abbr,.wrs_viewer acronym{border:0;font-variant:normal;}.wrs_viewer sup{vertical-align:baseline;}.wrs_viewer sub{vertical-align:baseline;}.wrs_viewer legend{color:#000;}.wrs_viewer input,.wrs_viewer button,.wrs_viewer textarea,.wrs_viewer select,.wrs_viewer optgroup,.wrs_viewer option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}.wrs_viewer input,.wrs_viewer button,.wrs_viewer textarea,.wrs_viewer select{*font-size:100%;}
+
+/* Fonts */
+
+@font-face {
+	font-family: 'Conv_a';
+	src: url('fonts/a.eot?v=3.8.3.2332');
+	src: url('fonts/a.ttf?v=3.8.3.2332') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Conv_math1RTL';
+	src: url('fonts/math1_rtl.eot?v=3.8.3.2332');
+	src: url('fonts/math1_rtl.ttf?v=3.8.3.2332') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Conv_math1';
+	src: url('fonts/math1.eot?v=3.8.3.2332');
+	src: url('fonts/math1.ttf?v=3.8.3.2332') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Conv_horizontal';
+	src: url('fonts/horizontal.eot?v=3.8.3.2332');
+	src: url('fonts/horizontal.ttf?v=3.8.3.2332') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Conv_brackets';
+	src: url('fonts/brackets.eot?v=3.8.3.2332');
+	src: url('fonts/brackets.ttf?v=3.8.3.2332') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Conv_brack_sm';
+	src: url('fonts/brack_sm.eot?v=3.8.3.2332');
+	src: url('fonts/brack_sm.ttf?v=3.8.3.2332') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Editor */
+
+.wrs_editor {
+	text-align: left;
+	white-space: nowrap;
+	position: relative;
+}
+
+.wrs_editor.wrs_rtl {
+	text-align: right;
+}
+
+/* Viewer */
+
+.wrs_viewer {
+	overflow: hidden;
+	text-align: left;
+	position: relative;
+	display: inline-block;
+	white-space: nowrap;
+	
+	/* IE 7 hacks */
+	zoom: 1;
+	*display: inline;
+}
+
+/* Common */
+
+.wrs_editor .wrs_imageContainer {									/* Image container */
+	position: relative;
+	display: block;
+	overflow: hidden;
+	margin: auto;
+}
+
+.wrs_editor .wrs_image {												/* Image */
+	/*position: absolute;*/
+}
+
+.wrs_editor .wrs_line {												/* Section separator */
+	display: inline-block;
+	
+	/* IE 7 hacks */
+	zoom: 1;
+	*display: inline;
+}
+
+.wrs_editor .wrs_panelContainer {									/* Body */
+	clear: none;
+	overflow: hidden;
+}
+
+.wrs_editor .wrs_panelContainer > div {								/* Panel */
+	display: none;
+}
+
+.wrs_editor .wrs_panelContainer > div > * {							/* Panel contents */
+	vertical-align: middle;
+}
+
+.wrs_editor .wrs_panelContainer > div.wrs_selected {					/* Selected panel */
+	display: block;
+}
+
+.wrs_editor .wrs_panelContainer > div > table {							/* Section */
+	display: inline-block;
+	border-collapse: separate;
+	width: auto;
+	
+	/* IE 7 hacks */
+	zoom: 1;
+	*display: inline;
+}
+
+.wrs_editor .wrs_hidden {
+	display: none !important;
+}
+
+.wrs_hiddenButDisplayed {
+	position: fixed;
+	width: 1px;
+	height: 1px;
+	left: -10px;
+	top: -10px;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+}
+
+/* Context panel */
+
+.wrs_editor .wrs_contextPanel {
+	z-index: 3;
+	position: absolute;
+	font-weight: bold;
+	font-size: 11px;
+}
+
+/* Toolbar */
+
+.wrs_editor .wrs_toolbar {											/* Toolbar */
+	margin-bottom: 2px;			/* Important: javascript thinks this value is 2px. */
+}
+
+.wrs_editor .wrs_toolbar .wrs_linksContainer {						/* Links container */
+	float: right;
+	height: 0;
+}
+
+.wrs_editor.wrs_rtl .wrs_toolbar .wrs_linksContainer {
+	float: left;
+}
+
+.wrs_editor .wrs_toolbar .wrs_linkButton {							/* Link button */
+    display:none;
+	position: relative;
+	z-index: 1;
+	direction: ltr;
+}
+
+.wrs_editor .wrs_toolbar .wrs_header {								/* Header */
+	position: relative;
+	top: 1px;
+}
+
+.wrs_editor .wrs_toolbar .wrs_header > button,							/* Tabs */
+.wrs_editor .wrs_toolbar .wrs_header > div {
+	text-align: center;
+	display: inline-block;
+	vertical-align: bottom;
+	margin-right: 2px;
+	border: none;
+	direction: ltr;
+	
+	/* IE 7 hacks */
+	zoom: 1;
+	*display: inline;
+}
+
+.wrs_editor.wrs_rtl .wrs_toolbar .wrs_header > button,
+.wrs_editor.wrs_rtl .wrs_toolbar .wrs_header > div {
+	margin-right: 0;
+	margin-left: 2px;
+}
+
+.wrs_editor .wrs_toolbar .wrs_header > button.wrs_selected,			/* Selected tab */
+.wrs_editor .wrs_toolbar .wrs_header > button.wrs_selected:hover,
+.wrs_editor .wrs_toolbar .wrs_header > div.wrs_selected,
+.wrs_editor .wrs_toolbar .wrs_header > div.wrs_selected:hover {
+	background-color: #ddd;
+	border-bottom: none;
+}
+
+.wrs_editor .wrs_toolbar .wrs_header > button:hover,						/* Hover tab */
+.wrs_editor .wrs_toolbar .wrs_header > div:hover {
+	background-color: #eee;
+}
+
+/* Formula display */
+
+.wrs_editor .wrs_formulaDisplay {									/* Formula display */
+	position: relative;
+	border: 1px solid #969696;	/* Important: javascript thinks this value is 1px. */
+	overflow: auto;
+	background-color: #fff;
+	cursor: text;
+	text-align: left;
+	direction: ltr;
+}
+
+.wrs_editor .wrs_formulaDisplay.wrs_formulaRTL {
+	direction: rtl;
+	text-align: right;
+}
+
+.wrs_editor .wrs_formulaDisplay .wrs_container {						/* Container */
+	display: inline-block;
+	position: relative;
+	margin: 5px;				/* Important: javascript thinks this value is 5px. */
+	direction: ltr;
+	
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	
+	/* IE 7 hacks */
+	zoom: 1;
+	*display: inline;
+}
+
+.wrs_viewer .wrs_container {											/* Container */
+	display: inline-block;
+	position: relative;
+	
+	/* IE 7 hacks */
+	zoom: 1;
+	*display: inline;
+}
+
+.wrs_editor .wrs_formulaDisplay.wrs_focused .wrs_caret {				/* Caret */
+	position: absolute;
+	background-color: #000;
+	z-index: 3;
+}
+
+.wrs_editor .wrs_formulaDisplay.wrs_focused .wrs_caret.wrs_light {	/* Light caret */
+	background-color: #ffffff;
+}
+
+.wrs_editor .wrs_formulaDisplay.wrs_focused .wrs_caret.wrs_dark {		/* Dark caret */
+	background-color: #000000;
+}
+
+.wrs_editor .wrs_formulaDisplay.wrs_focused .wrs_inverseCaret {				/* Inverse caret */
+	position: absolute;
+	background-color: #888;
+	z-index: 3;
+}
+
+.wrs_editor .wrs_formulaDisplay.wrs_focused .wrs_inverseCaret.wrs_light {	/* Light inverse caret */
+	background-color: #888;
+}
+
+.wrs_editor .wrs_formulaDisplay.wrs_focused .wrs_inverseCaret.wrs_dark {		/* Dark inverse caret */
+	background-color: #888;
+}
+
+.wrs_editor .wrs_formulaDisplay.wrs_focused .wrs_caret.wrs_blink,
+.wrs_editor .wrs_formulaDisplay.wrs_focused .wrs_inverseCaret.wrs_blink {		/* Caret blinking */
+	background-color: transparent !important;
+}
+
+.wrs_editor .wrs_formulaDisplay .wrs_selection {						/* Selection */
+	position: absolute;
+	background-color: #c3c3c3;
+	z-index: 1;
+}
+
+.wrs_editor .wrs_formulaDisplay .wrs_selection.wrs_light {			/* Selection light */
+	background-color: #c3c3c3;
+}
+
+
+.wrs_editor .wrs_formulaDisplay .wrs_selection.wrs_dark {				/* Selection dark */
+	background-color: #3c3c3c;
+}
+
+.wrs_editor .wrs_formulaDisplay .wrs_error {							/* Error background */
+	position: absolute;
+	background-color: #ffaaaa;
+	z-index: 0;
+}
+
+.wrs_editor .wrs_focusElementContainer {
+	background: #f00;
+	position: absolute;
+	z-index: 3;
+	overflow: hidden;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+}
+
+.wrs_editor .wrs_focusElement {										/* Hidden focus element */
+	border: none;
+	outline: 0;
+	position: absolute;
+	font-size: 1px;
+	top: -30px;
+}
+
+.wrs_editor .wrs_focusElement.wrs_forIOS {
+	width: 2px;
+	top: 0;
+}
+
+.wrs_editor .wrs_focusElement.wrs_forAndroid {
+	top: -30px;
+	height: 30px;
+}
+
+.wrs_editor .wrs_formulaDisplay .wrs_aChar,
+.wrs_viewer .wrs_aChar {												/* Text with a font */
+	font-family: 'Conv_a';
+}
+
+.wrs_editor .wrs_formulaDisplay .wrs_mathChar,
+.wrs_viewer .wrs_mathChar {											/* Text with math font */
+	font-family: 'Conv_math1';
+}
+
+.wrs_editor .wrs_formulaDisplay .wrs_mathRTLChar,
+.wrs_viewer .wrs_mathRTLChar {										/* Text with math font */
+	font-family: 'Conv_math1RTL';
+}
+
+.wrs_editor .wrs_formulaDisplay .wrs_horizontalChar,
+.wrs_viewer .wrs_horizontalChar {									/* Text with horizontal font */
+	font-family: 'Conv_horizontal';
+}
+
+.wrs_editor .wrs_formulaDisplay .wrs_specialChar,
+.wrs_viewer .wrs_specialChar {										/* Text with special font */
+	font-family: 'Conv_brackets';
+}
+
+.wrs_editor .wrs_formulaDisplay .wrs_specialSmallChar,
+.wrs_viewer .wrs_specialSmallChar {									/* Text with special small font */
+	font-family: 'Conv_brack_sm';
+}
+
+.wrs_editor .wrs_formulaDisplay .wrs_italic,
+.wrs_viewer  .wrs_italic {											/* Italic text */
+	font-style: italic;
+}
+
+.wrs_editor .wrs_formulaDisplay .wrs_notItalic,
+.wrs_viewer .wrs_notItalic {											/* Not italic text */
+	font-style: normal;
+}
+
+.wrs_editor .wrs_formulaDisplay .wrs_bold,
+.wrs_viewer .wrs_bold {												/* Bold text */
+	font-weight: bold;
+}
+
+.wrs_editor .wrs_formulaDisplay .wrs_notBold,
+.wrs_viewer .wrs_notBold {											/* Not bold text */
+	font-weight: normal;
+}
+
+/* Style */
+
+.wrs_editor,
+.wrs_viewer {
+	font-family: sans-serif;
+}
+
+.wrs_editor {
+	min-height: 200px;
+	height: 100%;
+}
+
+.wrs_editor .wrs_toolbar {
+	font-weight: bold;
+	font-size: 11px;
+	
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+.wrs_editor .wrs_toolbar .wrs_linkButton {							/* Link button */
+	margin-top: 4px;
+	margin-right: 2px;
+}
+
+.wrs_editor .wrs_toolbar .wrs_noTabs .wrs_linkButton {
+	margin-top: 10px;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+.wrs_editor .wrs_line {
+	margin-right: 1px;
+	width: 1px;
+	background: #bbbdbe;
+	height: 60px;
+}
+
+.wrs_editor .wrs_singleRowPanel .wrs_line {
+	margin-right: 1px;
+	width: 1px;
+	background: #bbbdbe;
+	height: 30px;
+}
+
+.wrs_editor .wrs_layoutFor2Rows .wrs_empty {							/* Empty section cell for 2 rows layout */
+	height: 33px;
+}
+
+.wrs_editor .wrs_layoutFor3Rows .wrs_empty {							/* Empty section cell for 3 rows layout */
+	height: 22px;
+}
+
+.wrs_editor .wrs_button {											/* Button */
+	border: 2px solid transparent;
+	cursor: pointer;
+	background: transparent;
+	overflow: hidden;
+	direction: ltr;
+}
+
+.wrs_editor .wrs_button:hover,
+.wrs_editor .wrs_button:focus {										/* Button hover */
+	border: 2px solid #778e9a;
+	outline: none;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.wrs_editor .wrs_button::-moz-focus-inner,
+.wrs_editor .wrs_button::-moz-focus-inner,
+.wrs_editor .wrs_button::-moz-focus-inner {
+	border: 0;
+}
+
+.wrs_editor .wrs_button:focus,
+.wrs_editor .wrs_button:focus,
+.wrs_editor .wrs_button:focus,
+.wrs_editor .wrs_button {
+	outline: none;
+}
+
+.wrs_editor .wrs_layoutFor1Rows .wrs_button:active,					/* Button active for 1 and 2 rows layout */
+.wrs_editor .wrs_layoutFor1Rows .wrs_button.wrs_toggled,
+.wrs_editor .wrs_layoutFor1Rows .wrs_button.wrs_pressed,
+.wrs_editor .wrs_layoutFor2Rows .wrs_button:active,
+.wrs_editor .wrs_layoutFor2Rows .wrs_button.wrs_toggled,
+.wrs_editor .wrs_layoutFor2Rows .wrs_button.wrs_pressed {
+	background: url('decoration/button_active.png?v=3.8.3.2332') -2px -2px;
+}
+
+.wrs_editor .wrs_layoutFor3Rows .wrs_button:active,					/* Button active for 3 rows layout */
+.wrs_editor .wrs_layoutFor3Rows .wrs_button.wrs_toggled,
+.wrs_editor .wrs_layoutFor3Rows .wrs_button.wrs_pressed {
+	background: url('decoration/button_small_active.png?v=3.8.3.2332') -2px -2px;
+}
+
+.wrs_editor .wrs_comboButton {										/* Combo button */
+	background: url('decoration/combo_button.png?v=3.8.3.2332') bottom center no-repeat;
+	width: 33px;
+	height: 62px;
+	cursor: pointer;
+	border: 2px solid transparent;
+}
+
+.wrs_editor .wrs_comboButton:hover {									/* Combo button hover */
+	background: url('decoration/combo_button_hover.png?v=3.8.3.2332') -2px -2px;
+}
+
+.wrs_editor .wrs_comboButton:active,									/* Combo button active */
+.wrs_editor .wrs_comboButton.wrs_pressed {
+	background: url('decoration/combo_button_active.png?v=3.8.3.2332') -2px -2px;
+}
+
+.wrs_editor .wrs_button.wrs_disabled,								/* Button disabled */
+.wrs_editor .wrs_comboButton.wrs_disabled {
+	border: 2px solid transparent !important;
+	background: none !important;
+	cursor: auto;
+}
+
+.wrs_editor .wrs_button.wrs_disabled img,								/* Button disabled image */
+.wrs_editor .wrs_comboButton.wrs_disabled img {
+	opacity: 0.3;
+	filter: alpha(opacity=30);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+}
+
+.wrs_editor .wrs_button.wrs_disabled:focus,
+.wrs_editor .wrs_comboButton.wrs_disabled:focus {
+	border: 2px solid rgba(119, 142, 154, 0.3) !important;
+}
+
+.wrs_editor .wrs_comboButton .wrs_imageContainer {
+	width: 33px !important;
+	height: 59px !important;
+}
+
+.wrs_editor .wrs_comboButtonItem {									/* Combo button item */
+	display: inline-block;
+	vertical-align: middle;
+	margin: 2px;
+	cursor: pointer;
+	
+	/* IE 7 hacks */
+	zoom: 1;
+	*display: inline;
+}
+
+.wrs_editor .wrs_comboButtonItem:hover {								/* Combo button item */
+	background: #a4cae7;
+}
+
+.wrs_editor .wrs_comboButtonPanel {									/* Combo button panel */
+	background: #fff;
+	border: 1px solid #000;
+}
+
+.wrs_editor .wrs_select {
+	background: url('decoration/select_background.png?v=3.8.3.2332') no-repeat right center;
+	color: #b1b3b4;
+	border: 1px solid #b1b3b4;		/* Important: javascript thinks this value is 1px. */
+	height: 18px;
+	overflow: hidden;
+	max-width: 73px;
+}
+
+.wrs_editor .wrs_select.wrs_withIcon {
+	max-width: 31px;
+}
+
+.wrs_editor .wrs_select select {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 1px;
+	height: 1px;
+	border: none;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+
+.wrs_editor .wrs_select > div {
+	max-width: 80px;
+	overflow: hidden;
+	padding-left: 5px;
+	padding-right: 15px;
+}
+
+.wrs_editor .wrs_select.wrs_withIcon > div {
+	padding-left: 1px;
+	padding-right: 12px;
+}
+
+.wrs_editor .wrs_select:hover {
+	background: url('decoration/select_background_hover.png?v=3.8.3.2332') no-repeat right center;
+	border: 1px solid #778e9a;
+	color: #778e9a;
+	cursor: pointer;
+}
+
+.wrs_editor .wrs_select.wrs_disabled,
+.wrs_editor .wrs_select.wrs_disabled:hover {
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+	background: url('decoration/select_background.png?v=3.8.3.2332') no-repeat right center;
+	color: #b1b3b4;
+	border: 1px solid #b1b3b4;		/* Important: javascript thinks this value is 1px. */
+	cursor: default;
+}
+
+.wrs_editor .wrs_select.wrs_disabled img {
+	opacity: 0.6;
+	filter: alpha(opacity=60);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+}
+
+.wrs_editor .wrs_select.wrs_pressed {
+	background: #778e9a url('decoration/select_background_pressed.png?v=3.8.3.2332') no-repeat right center;
+	color: #fff;
+	border: 1px solid #b1b3b4;
+	cursor: auto;
+}
+
+.wrs_editor .wrs_layoutFor1Rows .wrs_select,
+.wrs_editor .wrs_layoutFor2Rows .wrs_select {
+	margin: 6.5px 2px;
+}
+
+.wrs_editor .wrs_layoutFor3Rows .wrs_select {
+	margin: 1px 2px;
+}
+
+.wrs_editor .wrs_select .wrs_label {
+	height: 18px;
+	line-height: 18px;
+	text-overflow: ellipsis;
+}
+
+.wrs_editor .wrs_select .wrs_label.wrs_focused {
+	height: 16px;
+	line-height: 16px;
+	border: 1px solid #778e9a;
+	padding-left: 4px;
+	padding-right: 14px;
+}
+
+.wrs_editor .wrs_select.wrs_withIcon .wrs_label.wrs_focused {
+	padding-left: 0px;
+	padding-right: 11px;
+}
+
+.wrs_editor .wrs_selectPanel {
+	background: #edf2f4;
+	color: #778e9a;
+	border: 1px solid #b1b3b4;		/* Important: javascript thinks this value is 1px. */
+}
+
+.wrs_editor .wrs_selectPanel div {
+	height: 18px;
+	line-height: 18px;
+	padding: 0 5px;
+}
+
+.wrs_editor .wrs_selectPanel div.wrs_selected {
+	background: #c3d2d9;
+}
+
+.wrs_editor .wrs_selectPanel div:hover {
+	background: #778e9a;
+	color: #fff;
+	cursor: pointer;
+}
+
+.wrs_editor.wrs_rtl .wrs_select {
+	background: url('decoration/select_background.png?v=3.8.3.2332') no-repeat left center;
+}
+
+.wrs_editor.wrs_rtl .wrs_select div {
+	padding-left: 15px;
+	padding-right: 5px;
+}
+
+.wrs_editor.wrs_rtl .wrs_select:hover {
+	background: url('decoration/select_background_hover.png?v=3.8.3.2332') no-repeat left center;
+}
+
+.wrs_editor.wrs_rtl .wrs_select.wrs_pressed {
+	background: #778e9a url('decoration/select_background_pressed.png?v=3.8.3.2332') no-repeat left center;
+}
+
+.wrs_editor.wrs_rtl .wrs_select .wrs_label.wrs_focused {
+	padding-left: 14px;
+	padding-right: 4px;
+}
+
+.wrs_editor .wrs_layoutFor1Rows .wrs_colorChooser,
+.wrs_editor .wrs_layoutFor2Rows .wrs_colorChooser {
+	width: 29px;
+	height: 29px;
+}
+
+.wrs_editor .wrs_layoutFor3Rows .wrs_colorChooser {
+	width: 18px;
+	height: 18px;
+}
+
+.wrs_editor .wrs_colorChooserPanel,
+.wrs_editor .wrs_matrixButtonPanel {
+	background: #edf2f4;
+	color: #778e9a;
+	border: 1px solid #b1b3b4;		/* Important: javascript thinks this value is 1px. */
+}
+
+.wrs_editor .wrs_matrixButtonPanel {
+	padding: 1px;
+}
+
+.wrs_editor .wrs_colorChooserPanel table,
+.wrs_editor .wrs_matrixButtonPanel table {
+	border-collapse: separate;
+	border-spacing: 5px;
+}
+
+.wrs_editor .wrs_matrixButtonPanel table {
+	border-spacing: 1px;
+	width: 97px;		/* 6 * button.width + 8 * table.borderSpacing */
+}
+
+.wrs_editor .wrs_matrixButtonPanel td.wrs_inputCell {
+	text-align: right;
+}
+
+.wrs_editor .wrs_colorChooserPanel .wrs_colorButton,
+.wrs_editor .wrs_matrixButtonPanel .wrs_matrixButton {
+	width: 13px;
+	height: 13px;
+	border: 1px solid #b1b3b4;
+	cursor: pointer;
+	background: #fff;
+}
+
+.wrs_editor .wrs_matrixButtonPanel .wrs_matrixButton.wrs_selected {
+	background: #778E9A;
+}
+
+.wrs_editor .wrs_colorChooserPanel > div,
+.wrs_editor .wrs_matrixButtonPanel > div {
+	padding: 0 5px 5px 5px;
+}
+
+.wrs_editor .wrs_colorChooserPanel input,
+.wrs_editor .wrs_matrixButtonPanel input {
+	border: 1px solid #b1b3b4;
+	width: 50px;
+	margin-left: 5px;
+	padding: 1px;
+}
+
+.wrs_editor .wrs_matrixButtonPanel input {
+	margin-left: 0;
+	width: 35px;
+	text-align: right;
+}
+
+.wrs_editor .wrs_colorChooserPanel .wrs_acceptButton {
+	display: inline;
+	border: 1px solid #b1b3b4;
+	cursor: pointer;
+	padding: 0 2px;
+}
+
+.wrs_editor .wrs_panelContainer {									/* Body */
+	background: #dae4e9 url('decoration/body_background.png?v=3.8.3.2332') bottom left no-repeat;
+	border: 1px solid #778E9A;
+	padding: 2px;
+	-webkit-border-bottom-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.wrs_editor .wrs_panelContainer > div > table {							/* Section */
+	border-spacing: 0;
+	margin-right: 1px;
+}
+
+.wrs_editor .wrs_panelContainer > div > table.wrs_last {				/* Last section */
+	margin: 0;
+}
+
+.wrs_editor .wrs_toolbar .wrs_header > button,							/* Tabs */
+.wrs_editor .wrs_toolbar .wrs_header > div {
+	background: #556e7b url('decoration/tab_background.png?v=3.8.3.2332') top left no-repeat;
+	border-bottom: 1px solid #778E9A;
+	cursor: default;
+	height: 22px;
+	width: 44px;
+	text-align: center;
+	font-weight: normal;
+	color: #fff;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	*padding-top: 2px;
+	*height: 19px;
+}
+
+.wrs_editor .wrs_toolbar .wrs_header > button.wrs_selected,			/* Selected tab */
+.wrs_editor .wrs_toolbar .wrs_header > div.wrs_selected {
+	background: #f2f3f5 url('decoration/selected_tab_background.png?v=3.8.3.2332') top left no-repeat;
+	border: 1px solid #778E9A;
+	border-bottom: none;
+	height: 25px;
+	color: #000;
+	*padding-top: 3px;
+	*height: 21px;
+}
+
+.wrs_editor .wrs_toolbar .wrs_header > button::-moz-focus-inner {
+	border: 0;
+}
+
+.wrs_editor .wrs_toolbar .wrs_header > button:focus,
+.wrs_editor .wrs_toolbar .wrs_header > button {
+	outline: none;
+}
+
+.wrs_editor .wrs_toolbar .wrs_header > button > span {
+	margin-top: -1px;
+}
+
+.wrs_editor .wrs_toolbar .wrs_header > button:hover,
+.wrs_editor .wrs_toolbar .wrs_header > div:hover {							/* Hover tab */
+	background: #95ae99 url('decoration/tab_background_hover.png?v=3.8.3.2332') top left no-repeat;
+}
+
+.wrs_editor .wrs_toolbar .wrs_header > button.wrs_selected:hover,
+.wrs_editor .wrs_toolbar .wrs_header > div.wrs_selected:hover {							/* Hover selected tab */
+	background: #f2f3f5 url('decoration/selected_tab_background.png?v=3.8.3.2332') top left no-repeat;
+}
+
+.wrs_editor .wrs_toolbar .wrs_header > button.wrs_context,				/* Context tabs */
+.wrs_editor .wrs_toolbar .wrs_header > div.wrs_context {
+	background: #dc9e9e url('decoration/context_tab_background.png?v=3.8.3.2332') top left no-repeat;
+}
+
+.wrs_editor .wrs_toolbar .wrs_header > button.wrs_context.wrs_selected,
+.wrs_editor .wrs_toolbar .wrs_header > div.wrs_context.wrs_selected {		/* Selected context tab */
+	background: #dc9e9e url('decoration/selected_tab_background.png?v=3.8.3.2332') top left no-repeat;
+}
+
+.wrs_editor .wrs_toolbar .wrs_header > button.wrs_context:hover,
+.wrs_editor .wrs_toolbar .wrs_header > div.wrs_context:hover {		/* Hover context tabs */
+	background: #dcc09e url('decoration/context_tab_background_hover.png?v=3.8.3.2332') top left no-repeat;
+}
+
+.wrs_editor .wrs_toolbar .wrs_header > button.wrs_context.wrs_selected:hover,
+.wrs_editor .wrs_toolbar .wrs_header > div.wrs_context.wrs_selected:hover {		/* Hover selected context tab */
+	background: #dc9e9e url('decoration/selected_tab_background.png?v=3.8.3.2332') top left no-repeat;
+}
+
+.wrs_editor .wrs_toolbar .wrs_expandButton {							/* Expand button */
+	background: url('decoration/expand_button.png?v=3.8.3.2332') no-repeat bottom center;
+	cursor: pointer;
+	width: 7px;
+	height: 60px;
+	display: inline-block;
+	margin-right: 1px;
+	border: none;
+	direction: ltr;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	
+	/* IE 7 hacks */
+	zoom: 1;
+	*display: inline;
+}
+
+.wrs_editor .wrs_toolbar .wrs_expandButton:hover,
+.wrs_editor .wrs_toolbar .wrs_expandButton:focus,
+.wrs_editor .wrs_toolbar .wrs_expandButton.wrs_pressed {					/* Expand button hover */
+	background: url('decoration/expand_button_active.png?v=3.8.3.2332') no-repeat bottom center #778e9a;
+}
+
+.wrs_editor .wrs_toolbar .wrs_expandButton::-moz-focus-inner,
+.wrs_editor .wrs_toolbar .wrs_expandButton::-moz-focus-inner,
+.wrs_editor .wrs_toolbar .wrs_expandButton::-moz-focus-inner {
+	border: 0;
+}
+
+.wrs_editor .wrs_toolbar .wrs_expandButton:focus,
+.wrs_editor .wrs_toolbar .wrs_expandButton:focus,
+.wrs_editor .wrs_toolbar .wrs_expandButton:focus,
+.wrs_editor .wrs_toolbar .wrs_expandButton {
+	outline: none;
+}
+
+.wrs_editor .wrs_toolbar .wrs_expandButton.wrs_expandButtonFor1RowsLayout {
+	height: 33px;
+}
+
+.wrs_editor .wrs_tickContainer {										/* Tick container */
+	margin-top: 2px;
+	border: 1px solid #ccc;
+	background: #eee;
+	padding: 2px;
+	white-space: normal;
+	font-size: 12px;
+}
+
+.wrs_editor .wrs_tickContainer h1 {
+	font-size: 1.5em;
+}
+
+/* Fonts */
+
+.wrs_editor .wrs_font_arial {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrs_editor .wrs_font_courierNew {
+	font-family: "Courier New", Courier, monospace;
+}
+
+.wrs_editor .wrs_font_tahoma {
+	font-family: Tahoma, Geneva, sans-serif;
+}
+
+.wrs_editor .wrs_font_timesNewRoman {
+	font-family: "Times New Roman", Times, serif;
+}
+
+.wrs_editor .wrs_font_verdana {
+	font-family: Verdana, Geneva, sans-serif;
+}

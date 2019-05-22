@@ -1,0 +1,59 @@
+﻿/**
+ * @license Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or http://ckeditor.com/license
+ */
+
+CKEDITOR.editorConfig = function( config ) {
+	// Define changes to default configuration here.
+	// For the complete reference:
+	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
+
+	// The toolbar groups arrangement, optimized for two toolbar rows.
+	config.toolbarGroups = [
+        { name: 'document', groups: ['document', 'mode', 'doctools'] },
+		{ name: 'clipboard', groups: ['clipboard', 'undo'] },
+		{ name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing'] },
+		{ name: 'forms', groups: ['forms'] },
+		{ name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
+		{ name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph'] },
+		{ name: 'links', groups: ['links'] },
+		//{ name: 'insert', groups: ['insert'] },
+		{ name: 'styles', groups: ['styles'] },
+		{ name: 'colors', groups: ['colors'] },
+		{ name: 'tools', groups: ['tools'] }
+		//{ name: 'others', groups: ['others'] },
+		//{ name: 'about', groups: ['about'] }
+	];
+
+	// Remove some buttons, provided by the standard plugins, which we don't
+	// need to have in the Standard(s) toolbar.
+	config.removeButtons = 'Italic,Save,NewPage,Preview,Print,Source,Templates,PasteText,PasteFromWord,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,NumberedList,BulletedList,Outdent,Indent,Blockquote,CreateDiv,BidiLtr,BidiRtl,Language,Link,Unlink,Anchor,Table,HorizontalRule,Smiley,PageBreak,Iframe,Styles,Format,Font,TextColor,BGColor,Maximize,ShowBlocks,About';
+
+	// Se the most common block elements.
+	config.format_tags = 'p;h1;h2;h3;pre';
+	
+	config.allowedContent=true;
+	
+	// Make dialogs simpler.
+	config.removeDialogTabs = 'image:advanced;link:advanced';
+	
+	config.title = false;
+    config.extraPlugins += (config.extraPlugins.length == 0 ? '' : ',') + 'ckeditor_wiris,mypaste,capture_screen,upload_image';
+	config.removePlugins = 'image,elementspath';
+	config.resize_enabled = false;
+	
+    CKEDITOR.config.toolbar_Full =
+   		[
+   			{ name: 'document', items : [ 'Source'] },
+   			{ name: 'clipboard', items : [ 'Cut','Copy','Paste','-','Undo','Redo' ] },
+   			{ name: 'editing', items : [ 'Find'] },
+   			{ name: 'basicstyles', items : [ 'Bold','Underline'] },
+   			{ name: 'paragraph', items : [ 'JustifyLeft','JustifyCenter','JustifyRight'] },
+   			{ name: 'styles', items : [ 'Font','FontSize' ] },
+   			{ name: 'colors', items : [ 'TextColor','BGColor' ] }
+   		];
+    config.toolbar_Full.push({ name: 'wiris', items: ['ckeditor_wiris_formulaEditor'] });
+    config.filebrowserUploadUrl = "http://kc.huijiaoyun.cn/coursecenter/open/uploadPic.action";
+	config.allowedContent = '';
+    config.extraAllowedContent = 'b i sub sup s u pos';
+};
